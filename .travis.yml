@@ -9,27 +9,26 @@ script:
   - docker run kosdockerid/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t kosdockerid/multi-client ./client
-  - docker build -t kosdockerid/multi-nginx ./nginx
-  - docker build -t kosdockerid/multi-server ./server
-  - docker build -t kosdockerid/multi-worker ./worker
+#  - docker build -t kosdockerid/multi-client ./client
+#  - docker build -t kosdockerid/multi-nginx ./nginx
+#  - docker build -t kosdockerid/multi-server ./server
+#  - docker build -t kosdockerid/multi-worker ./worker
   # Log in to the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+#  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push kosdockerid/multi-client
-  - docker push kosdockerid/multi-nginx
-  - docker push kosdockerid/multi-server
-  - docker push kosdockerid/multi-worker
+#  - docker push kosdockerid/multi-client
+#  - docker push kosdockerid/multi-nginx
+#  - docker push kosdockerid/multi-server
+#  - docker push kosdockerid/multi-worker
+
 
 deploy:
   provider: elasticbeanstalk
-  region: eu-central-1
-  app: multi-docker
-  env: MultiDocker-env
-  bucket_name: elasticbeanstalk-eu-central-1-092663235681
-  bucket_path: docker-multi
-  on:
-    branch: master
-  access_key_id: $AWS_ACCESS_KEY
+  access_key_id:
+    secure: "$AWS_ACCESS_KEY"
   secret_access_key:
-    secure: $AWS_SECRET_KEY
+    secure: "$AWS_SECRET_KEY"
+  region: "eu-central-1"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-eu-central-1-092663235681"
