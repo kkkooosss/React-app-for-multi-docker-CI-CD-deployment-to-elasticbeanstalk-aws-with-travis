@@ -2,13 +2,13 @@ sudo: required
 services:
   - docker
 
-#before_install:
-#  - docker build -t kosdockerid/react-test -f ./client/Dockerfile.dev ./client
+before_install:
+  - docker build -t kosdockerid/react-test -f ./client/Dockerfile.dev ./client
 
-#script:
-#  - docker run kosdockerid/react-test npm test -- --coverage
+script:
+  - docker run kosdockerid/react-test npm test -- --coverage
 
-#after_success:
+after_success:
 #  - docker build -t kosdockerid/multi-client ./client
 #  - docker build -t kosdockerid/multi-nginx ./nginx
 #  - docker build -t kosdockerid/multi-server ./server
