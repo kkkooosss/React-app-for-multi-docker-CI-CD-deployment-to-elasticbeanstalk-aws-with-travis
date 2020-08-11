@@ -3,14 +3,14 @@
   "containerDefinitions": [
     {
       "name": "client",
-      "image": "stephengrider/multi-client",
+      "image": "kosdockerid/multi-client",
       "hostname": "client",
       "essential": false,
       "memory": 128
     },
     {
       "name": "server",
-      "image": "stephengrider/multi-server",
+      "image": "kosdockerid/multi-server",
       "hostname": "api",
       "essential": false,
       "memory": 128
@@ -24,7 +24,7 @@
     },
     {
       "name": "nginx",
-      "image": "stephengrider/multi-nginx",
+      "image": "kosdockerid/multi-nginx",
       "hostname": "nginx",
       "essential": true,
       "portMappings": [

@@ -17,19 +17,19 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
   - docker push kosdockerid/multi-client
-  - docker push stephengrider/multi-nginx
-  - docker push stephengrider/multi-server
-  - docker push stephengrider/multi-worker
+  - docker push kosdockerid/multi-nginx
+  - docker push kosdockerid/multi-server
+  - docker push kosdockerid/multi-worker
 
-#deploy:
-#  provider: elasticbeanstalk
-#  region: eu-central-1
-#  app: multi-docker
-#  env: MultiDocker-env
-#  bucket_name: elasticbeanstalk-eu-central-1-092663235681
-#  bucket_path: docker-multi
-#  on:
-#    branch: master
-#  access_key_id: $AWS_ACCESS_KEY
-#  secret_access_key:
-#    secure: $AWS_SECRET_KEY
+deploy:
+  provider: elasticbeanstalk
+  region: eu-central-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-eu-central-1-092663235681
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
